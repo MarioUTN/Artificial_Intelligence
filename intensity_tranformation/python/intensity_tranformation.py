@@ -5,6 +5,8 @@ Created on Thu May  5 11:14:15 2022
 @author: Mario Salazar
 """
 
+
+"""
 import cv2 as opencv
 import numpy as numpy
 from matplotlib import pyplot as plt
@@ -15,21 +17,20 @@ img = opencv.imread(image)
 u, th1 = opencv.threshold(img, 127, 255, opencv.THRESH_BINARY)
 u, th2 = opencv.threshold(img, 127, 255, opencv.THRESH_BINARY_INV)
 u, th3 = opencv.threshold(img, 127, 255, opencv.THRESH_TRUNC)
-#u, th4 = opencv.threshold(img, 127, 255, opencv.THRESH_TOZERO)
-#u, th5 = opencv.threshold(img, 127, 255, opencv.THRESH_TOZERO_INV)
+# u, th4 = opencv.threshold(img, 127, 255, opencv.THRESH_TOZERO)
+# u, th5 = opencv.threshold(img, 127, 255, opencv.THRESH_TOZERO_INV)
 
 images = [img, th1, th2, th3]
-tittle = ['Image Original','Image Binary','Image Binary_INV','Image Trunk']
+tittle = ['Image Original', 'Image Binary', 'Image Binary_INV', 'Image Trunk']
 
 for i in range(len(images)):
-    plt.subplot(3,2,i+1)
-    plt.imshow(images[i],'gray',vmin=0,vmax=255)
+    plt.subplot(3, 2, i + 1)
+    plt.imshow(images[i], 'gray', vmin=0, vmax=255)
     plt.title(tittle[i])
-    plt.xticks([]),plt.yticks([])
+    plt.xticks([]), plt.yticks([])
 
 plt.show()
 print(u)
-
 
 """
 import numpy as np
@@ -69,4 +70,3 @@ def main():
 if __name__ == '__main__':
     main()
 
-"""

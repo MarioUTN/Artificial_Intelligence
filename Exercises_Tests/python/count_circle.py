@@ -29,9 +29,10 @@ byte = numpy.uint8
 matriz = numpy.zeros((20, 20), byte)
 
 circle_matriz = opencv.circle(matriz, (10, 10), 2, (1, 1, 1), 1)
-#   print(ShowMatriz(circle_matriz))
-detected_circle = opencv.morphologyEx(thresh, opencv.MORPH_OPEN, circle_matriz, iterations=2)
 
+print(ShowMatriz(circle_matriz))
+detected_circle = opencv.morphologyEx(thresh, opencv.MORPH_OPEN, circle_matriz, iterations=2)
+opencv.imshow("U", detected_circle)
 # Matriz of lines found
 circle_found = opencv.findContours(detected_circle, opencv.RETR_EXTERNAL, opencv.CHAIN_APPROX_SIMPLE)
 
@@ -50,6 +51,6 @@ def Count(lines_found, count):
 
 
 print(Count(detected_circle, 0))
-opencv.imshow("Image Circle", detected_circle)
+#opencv.imshow("Image Circle", detected_circle)
 opencv.waitKey(0)
 opencv.destroyAllWindows()

@@ -12,11 +12,11 @@ import numpy as numpy
 from matplotlib import pyplot as plt
 
 
-def ShowMatriz(matriz):
+def ShowMatriz(matrix):
     resp = ""
-    for rows in range(len(matriz)):
-        for column in range(len(matriz[0])):
-            resp = resp + str(matriz[rows][column]) + "\t"
+    for rows in range(len(matrix)):
+        for column in range(len(matrix[0])):
+            resp = resp + str(matrix[rows][column]) + "\t"
         resp = resp + "\n"
     return resp
 

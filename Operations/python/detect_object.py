@@ -4,14 +4,14 @@ Created on Wed May 11 15:05:55 2022
 
 @author: Mario Salazar
 """
-
+"""
 import cv2 
-import numpy as np 
-  
-image = cv2.imread('../img/Figuras-Geometricas-para-Ninos.jpg', 0) 
-  
+import numpy as numpy 
+
+image = cv2.imread('../img/images.png', 0)
+
 params = cv2.SimpleBlobDetector_Params() 
-  
+
 params.filterByArea = True
 params.minArea = 100
   
@@ -28,7 +28,7 @@ detector = cv2.SimpleBlobDetector_create(params)
       
 keypoints = detector.detect(image) 
   
-blank = np.zeros((1, 1))  
+blank = numpy.zeros((1, 1))  
 blobs = cv2.drawKeypoints(image, keypoints, blank,(0, 0, 255), 
                           cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS) 
   
@@ -42,6 +42,8 @@ cv2.waitKey(0)
 cv2.destroyAllWindows() 
 
 """
+
+
 import cv2
 import numpy as np
 from matplotlib import pyplot as plt
@@ -98,4 +100,3 @@ cv2.imshow('shapes', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-"""

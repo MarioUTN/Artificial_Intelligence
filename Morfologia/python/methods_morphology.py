@@ -5,62 +5,68 @@ Created on Thu May  5 11:05:01 2022
 @author: Mario Salazar
 """
 
-
 import cv2 as opencv
 import numpy as numpy
 
-import cv2 as cv
-import numpy as np
+i = "../img/imagen_line.jpeg"
 
-i = "../img/j.jpg"
+img = opencv.imread(i)
 
-img = cv.imread("j.png")
-kernel = np.ones((5, 5), np.uint8)
-cv.imshow("Original Image {:} - ".format(img), img)
+kernel = numpy.ones((10, 10), numpy.uint8)
+#opencv.imshow("Original Image {:} - ".format(img), img)
 
+
+erosion = opencv.erode(img, kernel, iterations = 1)
+opencv.imshow("Erode Image {:} - ".format(erosion), erosion)
+
+canny = opencv.Canny(img, 100, 200)
+opencv.imshow("Dilate Image {:} - ".format(canny), canny)
 """
-erosion = cv.erode(img, kernel, iterations = 1)
-cv.imshow("Erode Image {:} - ".format(erosion), erosion)
 
-dilation = cv.dilate(img,kernel,iterations = 1)
-cv.imshow("Dilate Image {:} - ".format(dilation), dilation)
+dilation = opencv.dilate(img,kernel,iterations = 1)
+opencv.imshow("Dilate Image {:} - ".format(dilation), dilation)
 
-opening = cv.morphologyEx(img, cv.MORPH_OPEN, kernel)
-cv.imshow("Opening Image {:} - ".format(opening), opening)
+opening = opencv.morphologyEx(img, opencv.MORPH_OPEN, kernel)
+opencv.imshow("Opening Image {:} - ".format(opening), opening)
 
-closing = cv.morphologyEx(img, cv.MORPH_CLOSE, kernel)
-cv.imshow("Closing Image {:} - ".format(closing), closing)
+closing = opencv.morphologyEx(img, opencv.MORPH_CLOSE, kernel)
+opencv.imshow("Closing Image {:} - ".format(closing), closing)
 
-gradient = cv.morphologyEx(img, cv.MORPH_GRADIENT, kernel)
-cv.imshow("Gradient Image {:} - ".format(gradient), gradient)
+gradient = opencv.morphologyEx(img, opencv.MORPH_GRADIENT, kernel)
+opencv.imshow("Gradient Image {:} - ".format(gradient), gradient)
 
-tophat = cv.morphologyEx(img, cv.MORPH_TOPHAT, kernel)
-cv.imshow("Tophat Image {:} - ".format(tophat), tophat)
+tophat = opencv.morphologyEx(img, opencv.MORPH_TOPHAT, kernel)
+opencv.imshow("Tophat Image {:} - ".format(tophat), tophat)
 
-blackhat = cv.morphologyEx(img, cv.MORPH_BLACKHAT, kernel)
-cv.imshow("Blackhat Image {:} - ".format(blackhat), blackhat)
-
+blackhat = opencv.morphologyEx(img, opencv.MORPH_BLACKHAT, kernel)
+opencv.imshow("Blackhat Image {:} - ".format(blackhat), blackhat)
+"""
 """
 byte = numpy.uint8
+
+
 def ShowMatriz(matriz):
     resp = ""
     for rows in range(len(matriz)):
         for column in range(len(matriz[0])):
-            resp=resp+str(matriz[rows][column])+"\t"
-        resp=resp+"\n"
+            resp = resp + str(matriz[rows][column]) + "\t"
+        resp = resp + "\n"
     return resp
+
+
 vector_low_green = numpy.array([36, 100, 20], byte)
 vector_tall_green = numpy.array([70, 255, 255], byte)
 
-square = cv.getStructuringElement(cv.MORPH_RECT,(5,5))
+square = opencv.getStructuringElement(opencv.MORPH_RECT, (5, 5))
 
-elipse = cv.getStructuringElement(cv.MORPH_ELLIPSE,(25,15))
+ellipse = opencv.getStructuringElement(opencv.MORPH_ELLIPSE, (25, 15))
 
-cross = cv.getStructuringElement(cv.MORPH_CROSS,(5,5))
+cross = opencv.getStructuringElement(opencv.MORPH_CROSS, (5, 5))
 
-line = cv.getStructuringElement(cv.MORPH_RECT,(10,1))
+line = opencv.getStructuringElement(opencv.MORPH_RECT, (10, 1))
 
 print(ShowMatriz(line))
+"""
 
 opencv.waitKey(0)
 opencv.destroyAllWindows()
