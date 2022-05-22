@@ -166,3 +166,29 @@ opencv.imshow("Line", bw_img1)
 opencv.waitKey(0)
 opencv.destroyAllWindows()
 
+
+
+
+
+
+
+
+
+
+
+import cv2
+import numpy as np
+
+# read image, ensure binary
+img = cv2.imread('image.png', 0)
+img[img!=0] = 255
+
+# flood fill background to find inner holes
+holes = img.copy()
+cv2.floodFill(holes, None, (0, 0), 255)
+
+# invert holes mask, bitwise or with img fill in holes
+holes = cv2.bitwise_not(holes)
+filled_holes = cv2.bitwise_or(img, holes)
+cv2.imshow('', filled_holes)
+cv2.waitKey()

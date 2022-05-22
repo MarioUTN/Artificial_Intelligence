@@ -5,69 +5,29 @@ Created on Mon May 16 14:38:27 2022
 @author: Mario Salazar
 """
 
-
 import cv2 as opencv
-import numpy as numpy
+import matplotlib.pyplot as plt
+from Artificial_Intelligence.functions import mario_functions as mario
 
-i = "../img/imagen_line.jpeg"
+file = "../img/imagen_line.jpeg"
 
-img = opencv.imread(i)
+image = mario.ReadImage(file)
+erode = mario.Erode(file, 2, 2)
+canny = mario.Canny(file, 100, 200)
+canny_az = mario.CannyApertureSize(file, 100, 200)
+canny_l2gradient = mario.CannyL2Gradient(file, 100, 200)
+canny_l2gradient_az = mario.CannyL2Gradient(file, 100, 200)
 
-kernel = numpy.ones((10, 10), numpy.uint8)
-#opencv.imshow("Original Image {:} - ".format(img), img)
+mi = [image, erode, canny, canny_az, canny_l2gradient, canny_l2gradient_az]
+titles = ['Original', 'Erode', 'Canny', 'canny_az', 'canny_l2gradient', 'canny_l2gradient_az']
 
-
-erosion = opencv.erode(img, kernel, iterations = 1)
-opencv.imshow("Erode Image {:} - ".format(erosion), erosion)
-
-canny = opencv.Canny(img, 100, 200)
-opencv.imshow("Dilate Image {:} - ".format(canny), canny)
-"""
-
-dilation = opencv.dilate(img,kernel,iterations = 1)
-opencv.imshow("Dilate Image {:} - ".format(dilation), dilation)
-
-opening = opencv.morphologyEx(img, opencv.MORPH_OPEN, kernel)
-opencv.imshow("Opening Image {:} - ".format(opening), opening)
-
-closing = opencv.morphologyEx(img, opencv.MORPH_CLOSE, kernel)
-opencv.imshow("Closing Image {:} - ".format(closing), closing)
-
-gradient = opencv.morphologyEx(img, opencv.MORPH_GRADIENT, kernel)
-opencv.imshow("Gradient Image {:} - ".format(gradient), gradient)
-
-tophat = opencv.morphologyEx(img, opencv.MORPH_TOPHAT, kernel)
-opencv.imshow("Tophat Image {:} - ".format(tophat), tophat)
-
-blackhat = opencv.morphologyEx(img, opencv.MORPH_BLACKHAT, kernel)
-opencv.imshow("Blackhat Image {:} - ".format(blackhat), blackhat)
-"""
-"""
-byte = numpy.uint8
-
-
-def ShowMatriz(matriz):
-    resp = ""
-    for rows in range(len(matriz)):
-        for column in range(len(matriz[0])):
-            resp = resp + str(matriz[rows][column]) + "\t"
-        resp = resp + "\n"
-    return resp
-
-
-vector_low_green = numpy.array([36, 100, 20], byte)
-vector_tall_green = numpy.array([70, 255, 255], byte)
-
-square = opencv.getStructuringElement(opencv.MORPH_RECT, (5, 5))
-
-ellipse = opencv.getStructuringElement(opencv.MORPH_ELLIPSE, (25, 15))
-
-cross = opencv.getStructuringElement(opencv.MORPH_CROSS, (5, 5))
-
-line = opencv.getStructuringElement(opencv.MORPH_RECT, (10, 1))
-
-print(ShowMatriz(line))
-"""
-
+mario.ShowImageMorphology(erode, "Erode")
+mario.ShowImageMorphology(canny, "Canny")
+mario.ShowImageMorphology(canny_az, "Aperture")
+mario.ShowImageMorphology(canny_l2gradient, "L2Gradient")
+mario.ShowImageMorphology(canny_l2gradient_az, "L2Gradient")
+mario.ShowImageOriginal(file)
+# mario.ShowImagesPlot(mi, titles)
+plt.show()
 opencv.waitKey(0)
 opencv.destroyAllWindows()

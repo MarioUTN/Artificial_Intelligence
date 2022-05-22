@@ -5,6 +5,7 @@ Created on Tue May 10 11:57:52 2022
 @author: Mario Salazar
 """
 
+
 import cv2 as opencv
 import numpy as numpy
 from matplotlib import pyplot as plt
