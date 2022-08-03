@@ -1,0 +1,51 @@
+	Revision
+	
+	18 - Revisar encriptacion del DB Advanced Encryption Standard (AES)
+	
+	
+	{
+		"id": "01",
+		"name": "Mouse"
+	},
+	{
+		"id": "02",
+		"name": "Computer table"
+	},
+	{
+		"id": "03",
+		"name": "Cellphone"
+	},
+	{
+		"id": "04",
+		"name": "USB Memory 64 GB"
+	},
+	{
+		"id": "05",
+		"name": "Keyboard"
+	},
+	{
+		"id": "06",
+		"name": "Desktop"
+	},
+	{
+		"id": "07",
+		"name": "Laptop"
+	},
+	{
+		"id": "08",
+		"name": "Display"
+	},
+	{
+		"id": "09",
+		"name": "Printer"
+	},
+	{
+		"id": "10",
+		"name": "Video Camera"
+	},
+	{
+		"id": "11",
+		"name": "Parlante"
+	}
+
+	

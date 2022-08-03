@@ -8,52 +8,7 @@ Created on Mon May 16 14:46:39 2022
 
 import os as os
 import cv2 as opencv
-import numpy as numpy
-import path
-
-
-
-def Area(image):
-    area = 0
-    if os.path.isfile(image):
-        img = opencv.imread(image)
-        gray = opencv.cvtColor(image, opencv.COLOR_BGR2GRAY)
-        canny = opencv.Canny(gray, 10, 150)
-    return area
-
-
-def ShowMatriz(matriz):
-    resp = ""
-    for rows in range(len(matriz)):
-        for column in range(len(matriz[0])):
-            resp = resp + str(matriz[rows][column]) + "\t"
-        resp = resp + "\n"
-    return resp
-
-
-def Perimeter(image):
-    perimeter = 0
-    return perimeter
-
-
-def OutLine(image):
-    return
-
-
-def InclinationAngle(image):
-    return
-
-
-def MassCenter(image):
-    return
-
-
-def Semi_MajorAxis(image):
-    return
-
-
-def Semi_MinorAxis(image):
-    return
+import functions as f
 
 
 img = "../img/llaves.png"

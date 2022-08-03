@@ -10,6 +10,7 @@ import cv2 as opencv
 import numpy as numpy
 from matplotlib import pyplot as plt
 import os as os
+import functions as f
 
 img = "../img/imagen.jpeg"
 
@@ -26,7 +27,7 @@ def ShowImageOriginal(image):
 def Histogram(image):
     if os.path.isfile(image):
         img = opencv.imread(image)
-        image_gray = opencv.cvtColor(img, opencv.COLOR_BGR2RGB)
+        image_gray = f.Canny(250, 255)
         hist = opencv.calcHist([image_gray], [0], None, [256], [0, 255])
         fig = plt.figure(1)
         pl = fig.add_subplot(312)

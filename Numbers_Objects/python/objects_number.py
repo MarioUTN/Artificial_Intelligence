@@ -90,10 +90,10 @@ opencv.destroyAllWindows()
 images = [image, detected_lines_dp, detected_lines_dn, detected_lines_lh, detected_lines_lv]
 tittle = ['Image Original','Image Binary','Image Binary_INV','Image Trunk', 'Ultimo']
 
-for i in range(len(images)):
-    plt.subplot(3, 2, i+1)
-    plt.imshow(images[i],'gray',vmin=0,vmax=255)
-    plt.title(tittle[i])
+for index in range(len(images)):
+    plt.subplot(3, 2, index+1)
+    plt.imshow(images[index],'gray',vmin=0,vmax=255)
+    plt.title(tittle[index])
     plt.xticks([]),plt.yticks([])
 
 plt.show()

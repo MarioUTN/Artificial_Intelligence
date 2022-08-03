@@ -8,14 +8,14 @@ Created on Mon May 16 14:47:14 2022
 
 import cv2 as opencv
 import numpy as numpy
-from Artificial_Intelligence.functions import mario_functions as mario
+import functions as f
 
 img = "../img/pinon.png"
 
 # Read image
 im_in = opencv.imread(img, opencv.IMREAD_UNCHANGED)
 output = opencv.resize(im_in, (480, 350))
-gray = mario.GrayImageIMREAD_GRAYSCALE(img)
+gray = f.GrayImageIMREAD_GRAYSCALE(img)
 
 # Threshold.
 # Set values equal to or above 220 to 0.
@@ -62,12 +62,12 @@ opencv.drawContours(circle_matriz2, conts, 0, (255, 255, 0), -1)
 # Display images.
 
 output1 = opencv.resize(im_out, (480, 350))
-mario.ShowImageMorphology(output1, "A")
+f.ShowImageMorphology(output1, "A")
 output2 = opencv.resize(~circle_matriz1, (480, 350))
-mario.ShowImageMorphology(output2, "B")
+f.ShowImageMorphology(output2, "B")
 output3 = opencv.resize(circle_matriz2, (480, 350))
-mario.ShowImageMorphology(output3, "C")
-mario.ShowImageMorphology(output, "D")
+f.ShowImageMorphology(output3, "C")
+f.ShowImageMorphology(output, "D")
 
 print("Numero de dientes del piñon: {:}".format(len(conts)))
 

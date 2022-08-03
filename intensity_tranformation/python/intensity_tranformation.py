@@ -7,11 +7,11 @@ Created on Thu May  5 11:14:15 2022
 
 
 """
-import cv2 as opencv
+import opencv as opencv
 import numpy as numpy
 from matplotlib import pyplot as plt
 
-image = i = "../img/imagen_line.jpeg"
+image = index = "../img/imagen_line.jpeg"
 
 img = opencv.imread(image)
 u, th1 = opencv.threshold(img, 127, 255, opencv.THRESH_BINARY)
@@ -23,10 +23,10 @@ u, th3 = opencv.threshold(img, 127, 255, opencv.THRESH_TRUNC)
 images = [img, th1, th2, th3]
 tittle = ['Image Original', 'Image Binary', 'Image Binary_INV', 'Image Trunk']
 
-for i in range(len(images)):
-    plt.subplot(3, 2, i + 1)
-    plt.imshow(images[i], 'gray', vmin=0, vmax=255)
-    plt.title(tittle[i])
+for index in range(len(images)):
+    plt.subplot(3, 2, index + 1)
+    plt.imshow(images[index], 'gray', vmin=0, vmax=255)
+    plt.title(tittle[index])
     plt.xticks([]), plt.yticks([])
 
 plt.show()
