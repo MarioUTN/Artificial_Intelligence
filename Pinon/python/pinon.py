@@ -7,7 +7,7 @@ Created on Sat May 14 10:16:38 2022
 
 import cv2 as opencv
 import numpy as numpy
-from Artificial_Intelligence.functions import mario_functions as mario
+from Git.Artificial_Intelligence.functions import mario_functions as mario
 
 img = "../img/pinon.png"
 

@@ -29,7 +29,7 @@ def connect_sqlserver(hostname, dbname, username, password):
         # Atrapar error
         print("Ocurrió un error al conectar a SQL Server: ", e)
 
-cur = connect_sqlserver("127.0.0.1", "mario", "usermarioutn", "password-sqlserver")
+cur = connect_sqlserver("127.0.0.1", "mariosalazar", "sa", "password-sqlserver")
 cur.execute("SELECT*FROM view_invoice_byidcustomers")
 resp = cur.fetchall()
 # print(resp)

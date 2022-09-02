@@ -1,5 +1,6 @@
 import pyodbc as conn
 import psycopg2 as psy
+import mysql.connector as mysql
 
 host = '127.0.0.1'
 dbname = 'mario'
@@ -14,6 +15,26 @@ def Show(vector):
     return resp
 
 
+def connect_mysql(hostname, dbname, username, password):
+    try:
+        connect = mysql.connect(host=hostname, user=username, password=password, db=dbname)
+        print('Database connect successfully to MySQL', connect)
+        query = "select*from cliente"
+        cursor=connect.cursor()
+        cursor.execute(query)
+        for tabla in cursor:
+            print(tabla)
+        #cursor.close()
+        return connect
+    except Exception as e:
+        print('Ocurrio un error al conectar a MySQL')
+
+
+cursor = connect_mysql("127.0.0.1", "mariosalazar", "root", "password-mysql").cursor()
+print(cursor.execute('show tables'))
+
+
+
 def connect_postgresql(hostname, dbname, username, password):
     try:
         conn_query = "host = '" + hostname + "' dbname = '" + dbname + "' user= '" + username + "' password= '" + password + "'"
@@ -26,7 +47,7 @@ def connect_postgresql(hostname, dbname, username, password):
         print("Ocurrió un error al conectar a SQL Server: ", e)
 
 
-print(connect_postgresql("127.0.0.1", "proyecto", "postgres", "password-postgresql"))
+print(connect_postgresql("172.20.142.85", "proyecto", "usermario", "password-usermario"))
 
 
 def connect_sqlserver(hostname, dbname, username, password):
@@ -41,4 +62,4 @@ def connect_sqlserver(hostname, dbname, username, password):
         print("Ocurrió un error al conectar a SQL Server: ", e)
 
 
-print(connect_sqlserver("127.0.0.1", "mario", "usermarioutn", "password-sqlserver"))
+print(connect_sqlserver("172.20.142.85", "mariosalazar", "sa", "password-sqlserver"))
